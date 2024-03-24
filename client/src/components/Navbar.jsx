@@ -14,6 +14,7 @@ export default function Navbar ({setCurrentPage}) {
         <div>팁 보고</div>
         <div onClick={() => setCurrentPage('timecard')}>타임카드</div>
         <div>장보기</div>
+        <div onClick={() => setCurrentPage('menu')}>메뉴 수정</div>
       </>}
     </>
   )
