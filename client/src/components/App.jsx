@@ -8,12 +8,13 @@ import Menu from './Menu.jsx';
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInAs, setLoggedInAs] = useState('');
 
   if (!loggedIn) {
     return (
       <>
         <h2>최고집 포털</h2>
-        <Loginpage />
+        <Loginpage setLoggedIn={setLoggedIn}/>
       </>
     )
   }
