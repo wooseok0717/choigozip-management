@@ -9,4 +9,8 @@ router.post('/signup', controllers.createId);
 
 router.get('/getCred', controllers.getCred);
 
+router.get('/getRecentActivity', controllers.getActivities);
+
+router.post('/createTimeStamp', controllers.createTimeStamp);
+
 module.exports = router;

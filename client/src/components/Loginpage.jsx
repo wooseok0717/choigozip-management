@@ -22,7 +22,7 @@ const Loginpage = ({setLoggedIn}) => {
       })
       .then(({data}) => {
         if (typeof data === 'object') {
-          localStorage.setItem('id', data.id);
+          localStorage.setItem('user_id', data.user_id);
           localStorage.setItem('name', data.name);
           localStorage.setItem('tier', data.tier);
           setLoggedIn(true);

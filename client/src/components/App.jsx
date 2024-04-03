@@ -7,23 +7,22 @@ import Menu from './Menu.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('id'));
-  const [loggedInAs, setLoggedInAs] = useState('');
+  const [currentPage, setCurrentPage] = useState('timecard');
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('user_id'));
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
-  const [userTier, setUserTier] = useState('');
+  const [userTier, setUserTier] = useState(0);
 
   const handleLogOut = () => {
-    localStorage.removeItem('id');
+    localStorage.removeItem('user_id');
     localStorage.removeItem('name');
     localStorage.removeItem('tier');
     setLoggedIn(false);
   };
 
   useEffect(() => {
-    if (localStorage.getItem('id')) {
-      axios.get(`/api/getCred/?id=${localStorage.getItem('id')}`)
+    if (localStorage.getItem('user_id')) {
+      axios.get(`/api/getCred/?id=${localStorage.getItem('user_id')}`)
       .then(({data}) => {
         localStorage.setItem('name', data.name);
         localStorage.setItem('tier', data.tier);
@@ -34,7 +33,7 @@ const App = () => {
   },[]);
 
   useEffect(() => {
-    setUserId(localStorage.getItem('id'));
+    setUserId(localStorage.getItem('user_id'));
     setUserName(localStorage.getItem('name'));
     setUserTier(localStorage.getItem('tier'));
   },[loggedIn]);
@@ -46,7 +45,7 @@ const App = () => {
         <Loginpage setLoggedIn={setLoggedIn}/>
       </>
     )
-  } else if (userTier === 0) {
+  } else if (userTier < 1) {
     return (
       <>
         <h2>최고집 포털</h2>

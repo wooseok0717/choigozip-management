@@ -25,5 +25,18 @@ module.exports = {
   getCred: (req, res) => {
     axios.get(`${baseURL}/api/getCred/?id=${req.query.id}`)
     .then(({data}) => res.send(data));
+  },
+  createTimeStamp: (req, res) => {
+    const {id, action, time} = req.body;
+    axios.post(`${baseURL}/api/createTimeStamp`, {
+      id, action, time
+    })
+    .then(({data}) => {
+      res.send(data);
+    });
+  },
+  getActivities: (req, res) => {
+    axios.get(`${baseURL}/api/getActivities/?id=${req.query.id}`)
+    .then(({data}) => res.send(data));
   }
 }
