@@ -38,5 +38,37 @@ module.exports = {
   getActivities: (req, res) => {
     axios.get(`${baseURL}/api/getActivities/?id=${req.query.id}`)
     .then(({data}) => res.send(data));
+  },
+  createCategory: (req, res) => {
+    axios.post(`${baseURL}/api/createCategory`, req.body)
+    .then(({data}) => res.send(data));
+  },
+  getCategories: (req, res) => {
+    axios.get(`${baseURL}/api/getCategories`)
+    .then(({data}) => res.send(data));
+  },
+  changeCategoryOrder: (req, res) => {
+    axios.put(`${baseURL}/api/changeOrder/category`, null, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
+  },
+  createMenu: (req, res) => {
+    axios.post(`${baseURL}/api/menu`, req.body)
+    .then(({data}) => res.send(data));
+  },
+  getMenusWithId: (req, res) => {
+    axios.get(`${baseURL}/api/menuList/?id=${req.query.id}`)
+    .then(({data}) => res.send(data));
+  },
+  deleteCategory: (req, res) => {
+    axios.delete(`${baseURL}/api/category/?id=${req.query.id}`)
+    .then(({data}) => {res.send(data)})
+  },
+  changeCategoryData: (req, res) => {
+    axios.put(`${baseURL}/api/category`, null, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }

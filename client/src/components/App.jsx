@@ -7,7 +7,7 @@ import Menu from './Menu.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('timecard');
+  const [currentPage, setCurrentPage] = useState('menu');
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('user_id'));
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');

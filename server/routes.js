@@ -13,4 +13,18 @@ router.get('/getRecentActivity', controllers.getActivities);
 
 router.post('/createTimeStamp', controllers.createTimeStamp);
 
+router.post('/category', controllers.createCategory);
+
+router.get('/categories', controllers.getCategories);
+
+router.put('/changeOrder/category', controllers.changeCategoryOrder);
+
+router.post('/menu', controllers.createMenu);
+
+router.get('/menuList', controllers.getMenusWithId);
+
+router.delete('/category', controllers.deleteCategory);
+
+router.put('/category', controllers.changeCategoryData);
+
 module.exports = router;
