@@ -4,6 +4,7 @@ import Homepage from './Homepage.jsx';
 import Timecard from './Timecard.jsx';
 import Loginpage from './Loginpage.jsx';
 import Menu from './Menu.jsx';
+import ManageUsers from './ManageUsers.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     localStorage.removeItem('user_id');
     localStorage.removeItem('name');
     localStorage.removeItem('tier');
+    setCurrentPage('home');
     setLoggedIn(false);
   };
 
@@ -60,11 +62,13 @@ const App = () => {
       <h2>최고집 포털</h2>
       <div>
         {userName}님으로 접속 되어있습니다. {userTier}등급입니다. <button onClick={() => handleLogOut()}>로그아웃</button>
+        {userTier >= 5 && (<button onClick={() => setCurrentPage('users')}>유저 관리하기</button>)}
       </div>
       <Navbar setCurrentPage={setCurrentPage}/>
       {currentPage === 'home' && <Homepage />}
       {currentPage === 'timecard' && <Timecard />}
       {currentPage === 'menu' && <Menu />}
+      {currentPage === 'users' && <ManageUsers />}
     </>
   );
 }

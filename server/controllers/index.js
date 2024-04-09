@@ -86,5 +86,14 @@ module.exports = {
       params: req.query
     })
     .then(({data}) => res.send(data));
+  },
+  getUsers: (req, res) => {
+    axios.get(`${baseURL}/api/users`)
+    .then(({data}) => res.send(data));
+  },
+  updateTier: (req, res) => {
+    const {id, tier} = req.query;
+    axios.put(`${baseURL}/api/updateTier/?id=${id}&tier=${tier}`)
+    .then(({data}) => res.send(data));
   }
 }

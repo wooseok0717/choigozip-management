@@ -33,4 +33,8 @@ router.put('/changeOrder/menu', controllers.changeMenuOrder);
 
 router.put('/menu', controllers.changeMenuData);
 
+router.get('/users', controllers.getUsers);
+
+router.put('/updateTier', controllers.updateTier);
+
 module.exports = router;
