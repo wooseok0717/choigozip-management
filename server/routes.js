@@ -27,4 +27,8 @@ router.delete('/category', controllers.deleteCategory);
 
 router.put('/category', controllers.changeCategoryData);
 
+router.delete('/menu', controllers.deleteMenu);
+
+router.put('/changeOrder/menu', controllers.changeMenuOrder);
+
 module.exports = router;

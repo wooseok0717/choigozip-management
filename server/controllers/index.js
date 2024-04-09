@@ -70,5 +70,15 @@ module.exports = {
       params: req.query
     })
     .then(({data}) => res.send(data));
+  },
+  deleteMenu: (req, res) => {
+    axios.delete(`${baseURL}/api/menu/?id=${req.query.id}`)
+    .then(({data}) => res.send(data));
+  },
+  changeMenuOrder: (req, res) => {
+    axios.put(`${baseURL}/api/changeOrder/menu`, null, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }
