@@ -80,5 +80,11 @@ module.exports = {
       params: req.query
     })
     .then(({data}) => res.send(data));
+  },
+  changeMenuData: (req, res) => {
+    axios.put(`${baseURL}/api/menu`, null, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }

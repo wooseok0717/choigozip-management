@@ -31,4 +31,6 @@ router.delete('/menu', controllers.deleteMenu);
 
 router.put('/changeOrder/menu', controllers.changeMenuOrder);
 
+router.put('/menu', controllers.changeMenuData);
+
 module.exports = router;

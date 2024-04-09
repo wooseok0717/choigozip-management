@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import AddMenu from './AddMenu.jsx';
 
 const MenuEntry = ({menu, loadMenuList, ind, menuList}) => {
 
@@ -36,6 +37,8 @@ const MenuEntry = ({menu, loadMenuList, ind, menuList}) => {
       {menu.kor_name}
       {menu.eng_name}
       {menu.price}
+      <button onClick={() => setEdit(true)}>수정하기</button>
+      {edit && <AddMenu closeModal={() => setEdit(false)} catId={menu.category_id} loadMenuList={loadMenuList} menu={menu}/>}
       {ind > 0 && (<button onClick={() => handleChange(1)}>↑</button>)}
       {ind < menuList.length - 1 && (<button onClick={() => handleChange(-1)}>↓</button>)}
       <button onClick={handleDelete}>삭제하기</button>

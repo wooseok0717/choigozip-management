@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
-const AddMenu = ({setAddNewMenu, catId, loadMenuList}) => {
+const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
 
   const [korName, setKorName] = useState('');
   const [engName, setEngName] = useState('');
@@ -9,6 +9,40 @@ const AddMenu = ({setAddNewMenu, catId, loadMenuList}) => {
   const [engDetail, setEngDetail] = useState('');
   const [price, setPrice] = useState('');
   const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    if (menu) {
+      console.log(menu);
+      setKorName(menu.kor_name);
+      setEngName(menu.eng_name);
+      setKorDetail(menu.kor_details);
+      setEngDetail(menu.eng_details);
+      setPrice(menu.price);
+      setUrl(menu.img_url);
+    }
+  },[]);
+
+  const handleUpload = (e) => {
+    const file = e.target.files[0];
+
+    const cloudName = 'dfxarumgq';
+    const uploadPreset = 'krundzwn';
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', uploadPreset);
+
+    axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
+      .then((response) => {
+        const imageUrl = response.data.secure_url;
+
+        setUrl(imageUrl);
+        console.log(imageUrl);
+      })
+      .catch((error) => {
+        console.error('Error uploading image:', error);
+      });
+  }
 
   const handleSubmit = () => {
     if (korName === '') {
@@ -18,14 +52,27 @@ const AddMenu = ({setAddNewMenu, catId, loadMenuList}) => {
     } else if (price === '') {
       alert('가격을 입력해주세요.');
     } else {
-      axios.post('/api/menu', {
-        id: catId, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url
-      })
-      .then(({data}) => {
-        setAddNewMenu(false);
-        loadMenuList();
-        console.log(data);
-      });
+      if (!menu) {
+        axios.post('/api/menu', {
+          id: catId, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url
+        })
+        .then(({data}) => {
+          closeModal();
+          loadMenuList();
+          console.log(data);
+        });
+      } else {
+        axios.put('/api/menu',null, {
+          params: {
+            id: menu.id, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url
+          }
+        })
+        .then(({data}) => {
+          closeModal();
+          loadMenuList();
+          console.log(data);
+        })
+      }
     }
   }
 
@@ -58,12 +105,17 @@ const AddMenu = ({setAddNewMenu, catId, loadMenuList}) => {
           </div>
           <div>
             사진:
-            <input type='file' />
+            <input type='file' onChange={handleUpload}/>
+              {url && (
+                <div className='img-container'>
+                  <img src={url}/>
+                </div>
+              )}
           </div>
         </div>
         <div className='modal-footer'>
           <button onClick={handleSubmit}>추가하기</button>
-          <button onClick={() => setAddNewMenu(false)}>취소</button>
+          <button onClick={() => closeModal()}>취소</button>
         </div>
       </div>
     </div>

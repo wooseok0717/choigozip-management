@@ -60,7 +60,7 @@ const CategoryEntry = ({cat, ind, categories, loadCategories}) => {
       {ind > 0 && (<button onClick={() => handleChange(1)}>↑
 </button>)}
       {ind < categories.length - 1 && (<button onClick={() => handleChange(-1)}>↓</button>)}
-      {addNewMenu && <AddMenu setAddNewMenu={setAddNewMenu} catId={cat.id} loadMenuList={loadMenuList}/>}
+      {addNewMenu && <AddMenu closeModal={() => setAddNewMenu(false)} catId={cat.id} loadMenuList={loadMenuList}/>}
       {menuList.map((menu,ind) => (<MenuEntry key={ind} menu={menu} loadMenuList={loadMenuList} ind={ind} menuList={menuList}/>))}
     </div>
   )
