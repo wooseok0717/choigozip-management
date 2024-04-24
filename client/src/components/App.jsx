@@ -43,14 +43,14 @@ const App = () => {
   if (!loggedIn) {
     return (
       <>
-        <h2>최고집 포털</h2>
+        <h2 className='title'>최고집 포털</h2>
         <Loginpage setLoggedIn={setLoggedIn}/>
       </>
     )
   } else if (userTier < 1) {
     return (
       <>
-        <h2>최고집 포털</h2>
+        <h2 className='title'>최고집 포털</h2>
         <h1>유저등급이 너무 낮아 사용 하실수없습니다.</h1>
         <button onClick={() => handleLogOut()}>로그아웃</button>
       </>
@@ -59,8 +59,8 @@ const App = () => {
 
   return (
     <>
-      <h2>최고집 포털</h2>
-      <div>
+      <h2 className='title'>최고집 포털</h2>
+      <div className='current-user'>
         {userName}님으로 접속 되어있습니다. {userTier}등급입니다. <button onClick={() => handleLogOut()}>로그아웃</button>
         {userTier >= 5 && (<button onClick={() => setCurrentPage('users')}>유저 관리하기</button>)}
       </div>

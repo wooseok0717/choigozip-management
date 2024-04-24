@@ -1,5 +1,7 @@
 const axios = require('axios');
-const baseURL ='http://127.0.0.1:8080';
+// const baseURL ='http://127.0.0.1:8080';
+const baseURL ='http://3.101.130.150:3000';
+
 
 module.exports = {
   checkId: (req, res) => {

@@ -70,7 +70,7 @@ const AddCategory = ({closeModal, loadCategories, cat}) => {
           </div>
         </div>
         <div className='modal-footer'>
-          <button onClick={handleSubmit}>추가하기</button>
+          <button onClick={handleSubmit}>{cat ? '수정하기' : '추가하기'}</button>
           <button onClick={closeModal}>취소</button>
         </div>
       </div>

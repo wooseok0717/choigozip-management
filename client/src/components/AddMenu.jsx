@@ -64,7 +64,7 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
       } else {
         axios.put('/api/menu',null, {
           params: {
-            id: menu.id, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url
+            id: menu.id, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url, cat_id: menu.category_id
           }
         })
         .then(({data}) => {
@@ -114,7 +114,7 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
           </div>
         </div>
         <div className='modal-footer'>
-          <button onClick={handleSubmit}>추가하기</button>
+          <button onClick={handleSubmit}>{menu ? '수정하기' : '추가하기'}</button>
           <button onClick={() => closeModal()}>취소</button>
         </div>
       </div>
