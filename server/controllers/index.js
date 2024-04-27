@@ -1,7 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
-// const baseURL ='http://127.0.0.1:8080';
-const baseURL =process.env.baseURL;
+const baseURL = process.env.baseURL;
 
 
 module.exports = {
