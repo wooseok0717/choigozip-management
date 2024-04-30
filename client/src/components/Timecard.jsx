@@ -58,6 +58,7 @@ function Timecard() {
 
   return (
     <>
+      <h3 className='page-title'>타임카드</h3>
       <h2>
         {localStorage.getItem('name')}님으로 사용중이십니다.
       </h2>

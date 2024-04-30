@@ -5,10 +5,11 @@ import Timecard from './Timecard.jsx';
 import Loginpage from './Loginpage.jsx';
 import Menu from './Menu.jsx';
 import ManageUsers from './ManageUsers.jsx';
+import Promotion from './Promotion.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('menu');
+  const [currentPage, setCurrentPage] = useState('home');
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('user_id'));
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
@@ -69,6 +70,7 @@ const App = () => {
       {currentPage === 'timecard' && <Timecard />}
       {currentPage === 'menu' && <Menu />}
       {currentPage === 'users' && <ManageUsers />}
+      {currentPage === 'promo' && <Promotion />}
     </>
   );
 }

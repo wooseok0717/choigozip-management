@@ -25,7 +25,7 @@ const Menu = () => {
 
   return (
     <div>
-      <h3>메뉴</h3>
+      <h3 className='page-title'>메뉴수정</h3>
       <button onClick={() => setNewCategory(true)}>카테고리 추가</button>
       {categories.map((cat, ind) => (<CategoryEntry key={ind} cat={cat} ind={ind} categories={categories} loadCategories={loadCategories}/>))}
       {newCategory && (

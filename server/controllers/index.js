@@ -97,5 +97,9 @@ module.exports = {
     const {id, tier} = req.query;
     axios.put(`${baseURL}/api/updateTier/?id=${id}&tier=${tier}`)
     .then(({data}) => res.send(data));
+  },
+  createPromo: (req, res) => {
+    axios.post(`${baseURL}/api/promo`, req.body)
+    .then(({data}) => res.send(data));
   }
 }
