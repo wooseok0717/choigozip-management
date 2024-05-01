@@ -39,4 +39,8 @@ router.put('/updateTier', controllers.updateTier);
 
 router.post('/promo', controllers.createPromo);
 
+router.get('/promos', controllers.getPromos);
+
+router.delete('/promo',controllers.deletePromo);
+
 module.exports = router;

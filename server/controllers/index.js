@@ -101,5 +101,13 @@ module.exports = {
   createPromo: (req, res) => {
     axios.post(`${baseURL}/api/promo`, req.body)
     .then(({data}) => res.send(data));
+  },
+  getPromos: (req, res) => {
+    axios.get(`${baseURL}/api/promos`)
+    .then(({data}) => res.send(data));
+  },
+  deletePromo: (req, res) => {
+    axios.delete(`${baseURL}/api/promo/?id=${req.query.id}`)
+    .then(({data}) => res.send(data));
   }
 }
