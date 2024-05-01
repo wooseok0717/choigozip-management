@@ -109,5 +109,11 @@ module.exports = {
   deletePromo: (req, res) => {
     axios.delete(`${baseURL}/api/promo/?id=${req.query.id}`)
     .then(({data}) => res.send(data));
+  },
+  updatePromo: (req, res) => {
+    axios.put(`${baseURL}/api/promo`, null, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }

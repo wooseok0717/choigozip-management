@@ -9,6 +9,16 @@ const AddPromo = ({closeModal, loadPromos, promo}) => {
   const [korDetail, setKorDetail] = useState('');
   const [engDetail, setEngDetail] = useState('');
 
+  useEffect(() => {
+    if (promo) {
+      setKorTitle(promo.kor_title);
+      setEngTitle(promo.eng_title);
+      setUrl(promo.url);
+      setKorDetail(promo.kor_details);
+      setEngDetail(promo.eng_details);
+    }
+  },[]);
+
   const handleUpload = (e) => {
     const file = e.target.files[0];
 
@@ -45,14 +55,21 @@ const AddPromo = ({closeModal, loadPromos, promo}) => {
         })
         .then(({data}) => {
           alert(data);
-          // closeModal();
+          closeModal();
           loadPromos();
         });
       } else {
         alert('update the code for updating.')
-        // axios.put('/api/promo',null, {
-
-        // })
+        axios.put('/api/promo',null, {
+          params: {
+            id: promo.id, korTitle, engTitle: engTitle.toLowerCase(), url, korDetail, engDetail: engDetail.toLowerCase()
+          }
+        })
+        .then(({data}) => {
+          alert(data);
+          closeModal();
+          loadPromos();
+        })
       }
     }
   }

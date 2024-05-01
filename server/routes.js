@@ -43,4 +43,6 @@ router.get('/promos', controllers.getPromos);
 
 router.delete('/promo',controllers.deletePromo);
 
+router.put('/promo', controllers.updatePromo);
+
 module.exports = router;
