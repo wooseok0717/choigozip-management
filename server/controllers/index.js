@@ -115,5 +115,10 @@ module.exports = {
       params: req.query
     })
     .then(({data}) => res.send(data));
+  },
+  updatePromoState: (req, res) => {
+    const {id, active} = req.query;
+    axios.put(`${baseURL}/api/activatePromo/?id=${id}&active=${active}`)
+    .then(({data}) => res.send(data));
   }
 }

@@ -45,4 +45,6 @@ router.delete('/promo',controllers.deletePromo);
 
 router.put('/promo', controllers.updatePromo);
 
+router.put('/activatePromo', controllers.updatePromoState);
+
 module.exports = router;

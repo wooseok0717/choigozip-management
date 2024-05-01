@@ -9,8 +9,8 @@ const PromoEntry = ({promo,loadPromos}) => {
   const [edit, setEdit] = useState(false);
 
   const handleChange = () => {
-    axios.put(`/api/promo/?id=${promo.id}&active=${isActive}`)
-    .then(({data}) => console.log(data));
+    axios.put(`/api/activatePromo/?id=${promo.id}&active=${isActive}`)
+    .then(({data}) => setIsActive(data));
   }
 
   const handleDelete = () => {
