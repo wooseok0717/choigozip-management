@@ -6,6 +6,7 @@ import Loginpage from './Loginpage.jsx';
 import Menu from './Menu.jsx';
 import ManageUsers from './ManageUsers.jsx';
 import Promotion from './Promotion.jsx';
+import Sales from './Sales.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -71,6 +72,7 @@ const App = () => {
       {currentPage === 'menu' && <Menu />}
       {currentPage === 'users' && <ManageUsers />}
       {currentPage === 'promo' && <Promotion />}
+      {currentPage === 'sales' && <Sales />}
     </>
   );
 }
