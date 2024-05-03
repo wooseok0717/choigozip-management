@@ -23,8 +23,24 @@ const Promotion = () => {
       <div className='btn-ctn'>
         <button onClick={() => setAddNewPromo(true)}>프로모션 등록하기</button>
       </div>
-      {addNewPromo && (<AddPromo closeModal={() => setAddNewPromo(false)} loadPromos={loadPromos}/>)}
-      {promoList.map((promo, ind) => (<PromoEntry key={ind} promo={promo} loadPromos={loadPromos}/>))}
+      <div className='promotion-container'>
+        <div className='promo-row promo-label'>
+          <div className='promo-col promo-title'>
+            제목
+          </div>
+          <div className='promo-col promo-active'>
+            활성화
+          </div>
+          <div className='promo-col promo-edit'>
+            수정
+          </div>
+          <div className='promo-col promo-delete'>
+            삭제
+          </div>
+        </div>
+        {addNewPromo && (<AddPromo closeModal={() => setAddNewPromo(false)} loadPromos={loadPromos}/>)}
+        {promoList.map((promo, ind) => (<PromoEntry key={ind} promo={promo} loadPromos={loadPromos}/>))}
+      </div>
     </div>
   )
 }

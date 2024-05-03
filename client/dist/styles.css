@@ -154,3 +154,32 @@ button {
   text-align: center;
   font-size: 4rem;
 }
+
+.promo-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.5rem;
+  border: 2px solid white;
+}
+
+.promo-col {
+  width: 15%;
+  text-align: center;
+}
+
+.promo-title {
+  width: 45%;
+}
+
+.promo-data .promo-title {
+  text-align: left;
+}
+
+.promo-active input {
+  width: 2rem;
+  height: 2rem;
+}
+
+.promotion-container {
+  margin: 2rem;
+}

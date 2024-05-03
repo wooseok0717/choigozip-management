@@ -22,11 +22,19 @@ const PromoEntry = ({promo,loadPromos}) => {
   }
 
   return (
-    <div>
-      {promo.kor_title}
-      <input type='checkbox' checked={isActive} onChange={handleChange}/>
-      <button onClick={handleDelete}>삭제</button>
-      <button onClick={() => setEdit(true)}>수정하기</button>
+    <div className='promo-row promo-data'>
+      <div className='promo-col promo-title'>
+        {promo.kor_title}
+      </div>
+      <div className='promo-col promo-active'>
+        <input type='checkbox' checked={isActive} onChange={handleChange}/>
+      </div>
+      <div className='promo-col promo-edit'>
+        <button onClick={() => setEdit(true)}>수정하기</button>
+      </div>
+      <div className='promo-col promo-delete'>
+        <button onClick={handleDelete}>삭제</button>
+      </div>
       {edit && <AddPromo closeModal={() => setEdit(false)} promo={promo} loadPromos={loadPromos}/>}
     </div>
   )
