@@ -183,3 +183,19 @@ button {
 .promotion-container {
   margin: 2rem;
 }
+
+.sales-entry, .sales-entry-label {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 1rem;
+  font-size: 2.3rem;
+}
+
+.report-amount {
+  width: 25%;
+}
+
+.page-selector {
+  display: flex;
+  justify-content: space-around;
+}

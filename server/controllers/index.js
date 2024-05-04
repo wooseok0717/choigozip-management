@@ -126,7 +126,8 @@ module.exports = {
     .then(({data}) => res.send(data));
   },
   loadSalesReport: (req, res) => {
-    axios.get(`${baseURL}/api/salesReport`)
+    const {page, offset} = req.query;
+    axios.get(`${baseURL}/api/salesReport/?page=${page}&offset=${offset}`)
     .then(({data}) => res.send(data));
   }
 }
