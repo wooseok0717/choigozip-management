@@ -10,8 +10,10 @@ const SalesEntry = ({sales}) => {
       day: 'numeric',
       timeZone: 'America/Los_Angeles'
     };
-    const date = new Date(time);
-    return date.toLocaleString('en-US', options);
+    const newDate = new Date(time);
+    // comeback for fix this code
+    newDate.setDate(newDate.getDate() + 1);
+    return newDate.toLocaleString('en-US', options);
   };
 
   const calculateCash = (sales, tip) => {
