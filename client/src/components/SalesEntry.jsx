@@ -14,7 +14,7 @@ const SalesEntry = ({sales}) => {
   };
 
   const calculateCash = (sales, tip) => {
-    return (Number(sales) + Number(tip)).toFixed(2)
+    return Math.roundd(Number(sales) + Number(tip))
   }
 
   return (

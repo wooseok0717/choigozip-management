@@ -29,8 +29,8 @@ const AddReport = ({ closeModal,loadReports }) => {
       axios.post('/api/salesReport', obj)
       .then(({data}) => {
         loadReports();
-        // closeModal();
-        console.log(data)
+        closeModal();
+        alert(data)
       });
     }
   };
