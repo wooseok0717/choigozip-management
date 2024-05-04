@@ -125,4 +125,8 @@ module.exports = {
     axios.post(`${baseURL}/api/salesReport`, req.body)
     .then(({data}) => res.send(data));
   },
+  loadSalesReport: (req, res) => {
+    axios.get(`${baseURL}/api/salesReport`)
+    .then(({data}) => res.send(data));
+  }
 }

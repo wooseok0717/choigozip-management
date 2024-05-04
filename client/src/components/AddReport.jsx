@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const AddReport = ({ closeModal }) => {
+const AddReport = ({ closeModal,loadReports }) => {
 
   const [cashSales, setCashSales] = useState('');
   const [creditSales, setCreditSales] = useState('');
@@ -15,8 +15,24 @@ const AddReport = ({ closeModal }) => {
     const obj = {
       selectedDate,cashSales, creditSales,totalSales,creditTip,cashTip,totalTip
     }
-    axios.post('/api/salesReport', obj)
-    .then(({data}) => console.log(data));
+    if (selectedDate === '') {
+      alert('Please provide me a date.');
+    } else if (cashSales === '') {
+      alert('Cash sales can not be empty.');
+    } else if (creditSales === '') {
+      alert('Credit sales can not be empty.');
+    } else if (cashTip === '') {
+      alert('Cash tips can not be empty. If there was no cash tip please enter value 0');
+    } else if (creditTip === '') {
+      alert('Credit tips can not be empty. If there was no credit tip please enter value 0');
+    } else {
+      axios.post('/api/salesReport', obj)
+      .then(({data}) => {
+        loadReports();
+        // closeModal();
+        console.log(data)
+      });
+    }
   };
 
   const handleDateChange = (event) => {

@@ -49,4 +49,6 @@ router.put('/activatePromo', controllers.updatePromoState);
 
 router.post('/salesReport', controllers.createSalesReport);
 
+router.get('/salesReport', controllers.loadSalesReport);
+
 module.exports = router;
