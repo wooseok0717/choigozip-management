@@ -197,5 +197,5 @@ button {
 
 .page-selector {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }

@@ -7,13 +7,22 @@ const Sales = () => {
 
   const [newReport, setNewReport] = useState(false);
   const [salesList, setSalesList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(4);
   const [currentOffset, setCurrentOffset] = useState(10);
+  const [maxPage, setMaxPage] = useState(null);
 
   const loadReports = () => {
     axios.get(`/api/salesReport/?page=${currentPage}&offset=${currentOffset}`)
-    .then(({data}) => setSalesList(data));
+    .then(({data}) => {
+      setSalesList(data);
+      getMaxPage();
+    });
   };
+
+  const getMaxPage = () => {
+    axios.get(`/api/salesReport/maxPage/?offset=${currentOffset}`)
+    .then(({data}) => setMaxPage(data.maxPage));
+  }
 
   useEffect(() => {
     loadReports();
@@ -43,9 +52,9 @@ const Sales = () => {
         {salesList.map((sales, ind) => <SalesEntry key={ind} sales={sales}/>)}
       </div>
       <div className='page-selector'>
-        {currentPage > 1 && <span>{'<'}</span>}
+      <span onClick={() => setCurrentPage(currentPage - 1)}>{currentPage > 1 && '<'}</span>
         {currentPage}
-        <span>{'>'}</span>
+        <span onClick={() => setCurrentPage(currentPage + 1)}>{currentPage < maxPage && '>'}</span>
       </div>
       {newReport && <AddReport closeModal={() => setNewReport(false)} loadReports={loadReports}/>}
     </>
