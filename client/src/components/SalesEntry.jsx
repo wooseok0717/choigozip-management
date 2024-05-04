@@ -7,7 +7,8 @@ const SalesEntry = ({sales}) => {
   const convertTime = (time) => {
     const options = {
       month: 'numeric',
-      day: 'numeric'
+      day: 'numeric',
+      timeZone: 'America/Los_Angeles'
     };
     const date = new Date(time);
     return date.toLocaleString('en-US', options);
