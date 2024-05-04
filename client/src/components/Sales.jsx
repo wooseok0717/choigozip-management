@@ -8,7 +8,7 @@ const Sales = () => {
   const [newReport, setNewReport] = useState(false);
   const [salesList, setSalesList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentOffset, setCurrentOffset] = useState(10);
+  const [currentOffset, setCurrentOffset] = useState(9);
   const [maxPage, setMaxPage] = useState(null);
 
   const loadReports = () => {
