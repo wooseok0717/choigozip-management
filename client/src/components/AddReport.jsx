@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AddReport = ({ closeModal }) => {
 
@@ -8,12 +9,18 @@ const AddReport = ({ closeModal }) => {
   const [creditTip, setCreditTip] = useState('');
   const [cashTip, setCashTip] = useState('');
   const [totalTip, setTotalTip] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substr(0, 10));
 
   const handleSubmit = () => {
     const obj = {
-      cashSales, creditSales,totalSales,creditTip,cashTip
+      selectedDate,cashSales, creditSales,totalSales,creditTip,cashTip,totalTip
     }
-    console.log(obj);
+    axios.post('/api/salesReport', obj)
+    .then(({data}) => console.log(data));
+  };
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
   };
 
   const getTotal = (card, cash, unit) => {
@@ -35,6 +42,9 @@ const AddReport = ({ closeModal }) => {
           <h4 className='modal-title'>Add Report</h4>
         </div>
         <div className='modal-body'>
+          <div>
+            <input type='date' value={selectedDate} onChange={handleDateChange}/>
+          </div>
           <div>
             Cash Sales:
             <input type='number' value={cashSales} onChange={e => setCashSales(e.target.value)}/>

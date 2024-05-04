@@ -120,5 +120,9 @@ module.exports = {
     const {id, active} = req.query;
     axios.put(`${baseURL}/api/activatePromo/?id=${id}&active=${active}`)
     .then(({data}) => res.send(data));
-  }
+  },
+  createSalesReport: (req, res) => {
+    axios.post(`${baseURL}/api/salesReport`, req.body)
+    .then(({data}) => res.send(data));
+  },
 }
