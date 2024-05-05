@@ -52,9 +52,19 @@ const Sales = () => {
         {salesList.map((sales, ind) => <SalesEntry key={ind} sales={sales}/>)}
       </div>
       <div className='page-selector'>
-      <span onClick={() => setCurrentPage(currentPage - 1)}>{currentPage > 1 && '<'}</span>
+        {currentPage > 1 && (
+          <>
+            {/* <span onClick={() => setCurrentPage(1)}>{'<<'}</span> */}
+            <span onClick={() => setCurrentPage(currentPage - 1)}>{'<'}</span>
+          </>
+        )}
         <span className='page-label'>{currentPage}</span>
-        <span onClick={() => setCurrentPage(currentPage + 1)}>{currentPage < maxPage && '>'}</span>
+        {currentPage < maxPage && (
+          <>
+            <span onClick={() => setCurrentPage(currentPage + 1)}>{'>'}</span>
+            {/* <span onClick={() => setCurrentPage(maxPage)}>{'>>'}</span> */}
+          </>
+        )}
       </div>
       {newReport && <AddReport closeModal={() => setNewReport(false)} loadReports={loadReports}/>}
     </>

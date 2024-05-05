@@ -133,5 +133,9 @@ module.exports = {
   getMaxPage: (req, res) => {
     axios.get(`${baseURL}/api/salesReport/maxPage/?offset=${req.query.offset}`)
     .then(({data}) => res.send(data));
+  },
+  getStats: (req, res) => {
+    axios.get(`${baseURL}/api/stats`)
+    .then(({data}) => res.send(data));
   }
 }

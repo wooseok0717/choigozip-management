@@ -8,13 +8,18 @@ body {
 
 .row-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .row-item {
   border: 1px solid #000;
   width: 30%;
   height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-size: 3rem;
 }
 
 input.form-control {
@@ -193,6 +198,10 @@ button {
 
 .report-amount {
   width: 25%;
+}
+
+.report-date {
+  width: 10%;
 }
 
 .page-selector {

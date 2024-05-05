@@ -22,7 +22,7 @@ const SalesEntry = ({sales}) => {
 
   return (
     <div className='sales-entry'>
-      <div>
+      <div className='report-date'>
         {convertTime(sales.created_at)}
       </div>
       <div className='report-amount'>
