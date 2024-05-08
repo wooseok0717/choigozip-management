@@ -137,5 +137,9 @@ module.exports = {
   getStats: (req, res) => {
     axios.get(`${baseURL}/api/stats`)
     .then(({data}) => res.send(data));
+  },
+  createRecord: (req, res) => {
+    axios.post(`${baseURL}/api/record`, req.body)
+    .then(({data}) => res.send(data));
   }
 }

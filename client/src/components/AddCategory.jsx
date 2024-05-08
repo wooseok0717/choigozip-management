@@ -31,6 +31,11 @@ const AddCategory = ({closeModal, loadCategories, cat}) => {
           closeModal();
           loadCategories();
           alert(data);
+          axios.post('/api/record', {
+            action: `created a category called ${korName}`,
+            creator: localStorage.getItem('name')
+          }).
+          then(({data}) => console.log(data));
         });
       } else {
         axios.put('/api/category', null, {params: {

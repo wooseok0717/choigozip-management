@@ -2,8 +2,6 @@ import React from 'react';
 
 const SalesEntry = ({sales}) => {
 
-  console.log(sales);
-
   const convertTime = (time) => {
     const options = {
       month: 'numeric',
