@@ -25,6 +25,11 @@ const CategoryEntry = ({cat, ind, categories, loadCategories}) => {
     axios.delete(`/api/category/?id=${cat.id}`)
     .then(() => {
       loadCategories();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `deleted a category id#${cat.id}`
+      })
+      .then(({data}) => console.log(data))
     });
   }
 

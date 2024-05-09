@@ -30,7 +30,12 @@ const AddReport = ({ closeModal,loadReports }) => {
       .then(({data}) => {
         loadReports();
         closeModal();
-        alert(data)
+        alert(data);
+        axios.post('/api/record', {
+          creator: localStorage.getItem('name'),
+          action: `created a sales report on ${selectedDate}`
+        })
+        .then(({data}) => console.log(data));
       });
     }
   };
