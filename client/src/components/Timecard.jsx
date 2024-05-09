@@ -25,7 +25,15 @@ function Timecard() {
       action: currentAction,
       time: new Date().toLocaleString("en-US",{ timeZone: "America/Los_Angeles" }),
     })
-    .then(({data}) => getRecentActivity());
+    .then(({data}) => {
+      getRecentActivity();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `타임카드를 "${currentAction}" 하셨습니다.`,
+        type: 'user'
+      })
+      .then(({data}) => console.log(data));
+    });
   };
 
   const covertTime = (time) => {

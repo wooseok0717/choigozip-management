@@ -59,7 +59,8 @@ const AddPromo = ({closeModal, loadPromos, promo}) => {
           loadPromos();
           axios.post('/api/record', {
             creator: localStorage.getItem('name'),
-            action: `created a promo called ${korTitle}`
+            action: `프로모션 ${korTitle}을(를) 등록했습니다.`,
+            type: 'promo'
           })
           .then(({data}) => console.log(data))
         });
@@ -92,7 +93,8 @@ const AddPromo = ({closeModal, loadPromos, promo}) => {
             loadPromos();
             axios.post('/api/record', {
               creator: localStorage.getItem('name'),
-              action: `made changes with (${changes.join(', ')}) on promo ${promo.kor_title}`
+              action: `프로모션 ${promo.kor_title}의 (${changes.join(', ')}) 을(를) 변경했습니다.`,
+              type: 'promo'
             })
             .then(({data}) => console.log(data));
           })

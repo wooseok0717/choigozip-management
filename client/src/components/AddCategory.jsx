@@ -32,8 +32,9 @@ const AddCategory = ({closeModal, loadCategories, cat}) => {
           loadCategories();
           alert(data);
           axios.post('/api/record', {
-            action: `created a category called ${korName}`,
-            creator: localStorage.getItem('name')
+            action: `"${korName}" 카테고리를 등록했습니다.`,
+            creator: localStorage.getItem('name'),
+            type: 'category'
           }).
           then(({data}) => console.log(data));
         });
@@ -61,7 +62,8 @@ const AddCategory = ({closeModal, loadCategories, cat}) => {
             alert(data);
             axios.post('/api/record', {
               creator: localStorage.getItem('name'),
-              action: `made changes with (${changes.join(', ')}) on category ${cat.kor_name}`
+              action: `카테고리 ${cat.kor_name}의 (${changes.join(', ')}) 을(를) 변경했습니다. `,
+              type: 'category'
             })
             .then(({data}) => console.log(data));
           });

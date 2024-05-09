@@ -62,7 +62,8 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
           console.log(data);
           axios.post('/api/record', {
             creator: localStorage.getItem('name'),
-            action: `created a menu called ${korName}`
+            action: `"${korName}" 메뉴룰 등록했습니다.`,
+            type: 'menu'
           })
           .then(({data}) => console.log(data));
         });
@@ -98,7 +99,8 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
             console.log(data);
             axios.post('/api/record', {
               creator: localStorage.getItem('name'),
-              action: `made changes with (${changes.join(', ')}) on menu ${menu.kor_name}`
+              action: `메뉴 ${menu.kor_name}의 (${changes.join(', ')})을(를) 변경했습니다.`,
+              type: 'menu'
             })
             .then(({data}) => console.log(data));
           })

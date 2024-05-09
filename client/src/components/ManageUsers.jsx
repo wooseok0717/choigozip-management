@@ -14,9 +14,17 @@ const ManageUsers = () => {
     .then(({data}) => setUserList(data));
   }
 
-  const handleChange = (tier, id) => {
+  const handleChange = (tier, id, name) => {
     axios.put(`/api/updateTier/?id=${id}&tier=${tier}`)
-    .then(({data}) => console.log(data));
+    .then(({data}) => {
+      console.log(data)
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `${name}님의 등급을 ${tier}로(으로) 변경했습니다.`,
+        type: 'user'
+      })
+      .then(({data}) => console.log(data))
+    });
   }
 
   return (
@@ -31,7 +39,7 @@ const ManageUsers = () => {
           </div>
           <div className='user-col'>
             {user.tier === 5 ? (<>5</>) : (
-            <select onChange={e => handleChange(e.target.value, user.user_id)}>
+            <select onChange={e => handleChange(e.target.value, user.user_id,user.name)}>
               {[0,1,2,3,4].map((tier,ind) => (
                 <option key={ind} selected={tier === user.tier} value={tier}>{tier}</option>
               ))}

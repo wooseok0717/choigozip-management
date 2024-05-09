@@ -33,7 +33,8 @@ const AddReport = ({ closeModal,loadReports }) => {
         alert(data);
         axios.post('/api/record', {
           creator: localStorage.getItem('name'),
-          action: `created a sales report on ${selectedDate}`
+          action: `${selectedDate}의 리포트를 작성했습니다.`,
+          type: 'report'
         })
         .then(({data}) => console.log(data));
       });

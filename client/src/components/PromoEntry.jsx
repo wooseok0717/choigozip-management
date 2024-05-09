@@ -10,7 +10,15 @@ const PromoEntry = ({promo,loadPromos}) => {
 
   const handleChange = () => {
     axios.put(`/api/activatePromo/?id=${promo.id}&active=${isActive}`)
-    .then(({data}) => setIsActive(data));
+    .then(({data}) => {
+      setIsActive(data)
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `프로모션 ${promo.kor_title}의 상태를 변경했습니다.`,
+        type: 'promo'
+      })
+      .then(({data}) => console.log(data));
+    });
   }
 
   const handleDelete = () => {
@@ -18,6 +26,12 @@ const PromoEntry = ({promo,loadPromos}) => {
     .then(({data}) => {
       console.log(data);
       loadPromos();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `프로모션 ${promo.kor_title}을(를) 삭제했습니다.`,
+        type: 'promo'
+      })
+      .then(({data}) => console.log(data));
     });
   }
 

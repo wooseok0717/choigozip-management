@@ -11,6 +11,11 @@ const MenuEntry = ({menu, loadMenuList, ind, menuList}) => {
     .then(({data}) => {
       alert(data);
       loadMenuList();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `메뉴 ${menu.kor_name}을(를) 삭제했습니다.`,
+        type: 'menu'
+      })
     });
   }
 

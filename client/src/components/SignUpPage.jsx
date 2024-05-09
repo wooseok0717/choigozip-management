@@ -33,6 +33,12 @@ const SignUpPage = ({setSigningUp}) => {
       .then(() => {
         setSigningUp(false);
         alert('회원가입이 완료되었습니다.');
+        axios.post('/api/record', {
+          creator: localStorage.getItem('name'),
+          action: `${name}님이 회원가입을 신청했습니다.`,
+          type: 'user'
+        })
+        .then(({data}) => console.log(data));
       });
     }
   }

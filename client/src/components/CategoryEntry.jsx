@@ -27,7 +27,8 @@ const CategoryEntry = ({cat, ind, categories, loadCategories}) => {
       loadCategories();
       axios.post('/api/record', {
         creator: localStorage.getItem('name'),
-        action: `deleted a category id#${cat.id}`
+        action: `카테고리 ${cat.kor_name}를 삭제했습니다.`,
+        type: 'category'
       })
       .then(({data}) => console.log(data))
     });
