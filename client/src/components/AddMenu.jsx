@@ -60,18 +60,51 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
           closeModal();
           loadMenuList();
           console.log(data);
+          axios.post('/api/record', {
+            creator: localStorage.getItem('name'),
+            action: `created a menu called ${korName}`
+          })
+          .then(({data}) => console.log(data));
         });
       } else {
-        axios.put('/api/menu',null, {
-          params: {
-            id: menu.id, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url, cat_id: menu.category_id
-          }
-        })
-        .then(({data}) => {
+        let changes = [];
+        if (korName !== menu.kor_name) {
+          changes.push('name(kor)');
+        }
+        if (engName !== menu.eng_name) {
+          changes.push('name(eng)');
+        }
+        if (korDetail !== menu.kor_details) {
+          changes.push('details(kor)');
+        }
+        if (engDetail !== menu.eng_details) {
+          changes.push('details(eng)');
+        }
+        if (url !== menu.img_url) {
+          changes.push('image');
+        }
+        if (price !== menu.price) {
+          changes.push('price');
+        }
+        if (changes.length) {
+          axios.put('/api/menu',null, {
+            params: {
+              id: menu.id, korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), price, url, cat_id: menu.category_id
+            }
+          })
+          .then(({data}) => {
+            closeModal();
+            loadMenuList();
+            console.log(data);
+            axios.post('/api/record', {
+              creator: localStorage.getItem('name'),
+              action: `made changes with (${changes.join(', ')}) on menu ${menu.kor_name}`
+            })
+            .then(({data}) => console.log(data));
+          })
+        } else {
           closeModal();
-          loadMenuList();
-          console.log(data);
-        })
+        }
       }
     }
   }

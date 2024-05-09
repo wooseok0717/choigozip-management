@@ -38,14 +38,36 @@ const AddCategory = ({closeModal, loadCategories, cat}) => {
           then(({data}) => console.log(data));
         });
       } else {
-        axios.put('/api/category', null, {params: {
-          korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), id: cat.id
-        }})
-        .then(({data}) => {
+        let changes = [];
+        if (korName !== cat.kor_name) {
+          changes.push('name(kor)');
+        }
+        if (engName !== cat.eng_name) {
+          changes.push('name(eng)');
+        }
+        if (korDetail !== cat.kor_details) {
+          changes.push('details(kor)');
+        }
+        if (engDetail !== cat.eng_details) {
+          changes.push('details(eng)');
+        }
+        if (changes.length) {
+          axios.put('/api/category', null, {params: {
+            korName, engName: engName.toLowerCase(), korDetail, engDetail: engDetail.toLowerCase(), id: cat.id
+          }})
+          .then(({data}) => {
+            closeModal();
+            loadCategories();
+            alert(data);
+            axios.post('/api/record', {
+              creator: localStorage.getItem('name'),
+              action: `made changes with (${changes.join(', ')}) on category ${cat.kor_name}`
+            })
+            .then(({data}) => console.log(data));
+          });
+        } else {
           closeModal();
-          loadCategories();
-          alert(data);
-        });
+        }
       }
     }
   };

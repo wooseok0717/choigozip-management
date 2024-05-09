@@ -57,19 +57,48 @@ const AddPromo = ({closeModal, loadPromos, promo}) => {
           alert(data);
           closeModal();
           loadPromos();
+          axios.post('/api/record', {
+            creator: localStorage.getItem('name'),
+            action: `created a promo called ${korTitle}`
+          })
+          .then(({data}) => console.log(data))
         });
       } else {
-        alert('update the code for updating.')
-        axios.put('/api/promo',null, {
-          params: {
-            id: promo.id, korTitle, engTitle: engTitle.toLowerCase(), url, korDetail, engDetail: engDetail.toLowerCase()
-          }
-        })
-        .then(({data}) => {
-          alert(data);
+        let changes = [];
+        if (korTitle !== promo.kor_title) {
+          changes.push('title(kor)');
+        }
+        if (engTitle !== promo.eng_title) {
+          changes.push('title(eng)');
+        }
+        if (korDetail !== promo.kor_details) {
+          changes.push('details(kor)');
+        }
+        if (engDetail !== promo.eng_details) {
+          changes.push('details(eng)');
+        }
+        if (url !== promo.img_url) {
+          changes.push('image');
+        }
+        if (changes.length) {
+          axios.put('/api/promo',null, {
+            params: {
+              id: promo.id, korTitle, engTitle: engTitle.toLowerCase(), url, korDetail, engDetail: engDetail.toLowerCase()
+            }
+          })
+          .then(({data}) => {
+            alert(data);
+            closeModal();
+            loadPromos();
+            axios.post('/api/record', {
+              creator: localStorage.getItem('name'),
+              action: `made changes with (${changes.join(', ')}) on promo ${promo.kor_title}`
+            })
+            .then(({data}) => console.log(data));
+          })
+        } else {
           closeModal();
-          loadPromos();
-        })
+        }
       }
     }
   }
