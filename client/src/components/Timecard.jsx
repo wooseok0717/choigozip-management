@@ -41,7 +41,7 @@ function Timecard() {
     const options = {
       weekday: 'long', // Full name of the day of the week
       year: 'numeric',
-      month: 'long',
+      month: 'numeric',
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',

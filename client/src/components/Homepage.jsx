@@ -47,7 +47,7 @@ const Homepage = () => {
           <div>최고기록:</div>
           <div>${highestSales}</div>
         </div>
-        <div className='row-item'>Place Holder</div>
+        {/* <div className='row-item'>Place Holder</div> */}
       </div>
       <div className='row-container'>
         <div className='row-item'>
@@ -59,12 +59,12 @@ const Homepage = () => {
           <div>{mostRecentDate}</div>
           <div>${mostRecentSales}</div>
         </div>
-        <div className='row-item'>Place Holder</div>
+        {/* <div className='row-item'>Place Holder</div> */}
       </div>
       <div className='row-container'>
-        <div className='row-item'>Place Holder</div>
-        <div className='row-item'>Place Holder</div>
-        <div className='row-item'>Place Holder</div>
+        {/* <div className='row-item'>Place Holder</div> */}
+        {/* <div className='row-item'>Place Holder</div> */}
+        {/* <div className='row-item'>Place Holder</div> */}
       </div>
     </div>
   )
