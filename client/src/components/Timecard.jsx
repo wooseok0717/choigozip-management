@@ -82,7 +82,7 @@ function Timecard() {
       <div>
         {recentActivities.map((row,index) => (
           <div key={index}>
-            {covertTime(row.time)} {row.time} {row.interaction.toUpperCase()}
+            {covertTime(row.time)} {console.log(row.time)} {row.interaction.toUpperCase()}
           </div>
         ))}
       </div>
