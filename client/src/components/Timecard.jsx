@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 function Timecard() {
 
@@ -82,7 +83,8 @@ function Timecard() {
       <div>
         {recentActivities.map((row,index) => (
           <div key={index}>
-            {covertTime(row.time)} {console.log(row.time)} {row.interaction.toUpperCase()}
+            {covertTime(row.time)} {console.log(new Date())}
+            {console.log(moment(new Date(row.time)).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'))} {row.interaction.toUpperCase()}
           </div>
         ))}
       </div>
