@@ -47,7 +47,7 @@ function Timecard() {
       minute: 'numeric',
       hour12: true // Use 12-hour clock format
     };
-    const date = new Date(time);
+    const date = new Date(new Date(time).getTime() + (7 * 60 * 60 * 1000));
     return date.toLocaleString('en-US', options);
   };
 
@@ -83,8 +83,7 @@ function Timecard() {
       <div>
         {recentActivities.map((row,index) => (
           <div key={index}>
-            {covertTime(row.time)}
-            {console.log(new Date(row.time))} {row.interaction.toUpperCase()}
+            {covertTime(row.time)}{row.interaction.toUpperCase()}
           </div>
         ))}
       </div>
