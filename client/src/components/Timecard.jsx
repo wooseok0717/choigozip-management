@@ -70,6 +70,14 @@ function Timecard() {
       <h2>
         {localStorage.getItem('name')}님으로 사용중이십니다.
       </h2>
+      <div className='btn-ctn'>
+        {currentAction === 'in' ? (
+          <button onClick={() => handleClick()}>Clock In</button>
+        ) : (
+          <button onClick={() => handleClick()}>Clock Out</button>
+        )
+        }
+      </div>
       <div>최근기록</div>
       <div>
         {recentActivities.map((row,index) => (
@@ -78,12 +86,7 @@ function Timecard() {
           </div>
         ))}
       </div>
-      {currentAction === 'in' ? (
-        <button onClick={() => handleClick()}>Clock In</button>
-      ) : (
-        <button onClick={() => handleClick()}>Clock Out</button>
-      )
-      }
+
 
     </>
   );

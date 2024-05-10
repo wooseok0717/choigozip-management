@@ -141,5 +141,10 @@ module.exports = {
   createRecord: (req, res) => {
     axios.post(`${baseURL}/api/record`, req.body)
     .then(({data}) => res.send(data));
+  },
+  loadHistory: (req, res) => {
+    const {page, offset} = req.query;
+    axios.get(`${baseURL}/api/history/?page=${page}&offset=${offset}`)
+    .then(({data}) => res.send(data));
   }
 }

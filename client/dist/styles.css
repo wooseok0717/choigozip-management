@@ -151,7 +151,6 @@ button {
 
 .btn-ctn {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
 }
 
@@ -216,4 +215,16 @@ button {
 
 .sales-ctn {
   min-height: 38vh;
+}
+
+.type-selector {
+  font-size: 2rem;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.hist-entry {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5rem;
 }

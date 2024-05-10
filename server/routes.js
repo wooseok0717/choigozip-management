@@ -57,4 +57,6 @@ router.get('/stats', controllers.getStats);
 
 router.post('/record', controllers.createRecord);
 
+router.get('/history', controllers.loadHistory);
+
 module.exports = router;

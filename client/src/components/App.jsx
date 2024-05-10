@@ -7,6 +7,7 @@ import Menu from './Menu.jsx';
 import ManageUsers from './ManageUsers.jsx';
 import Promotion from './Promotion.jsx';
 import Sales from './Sales.jsx';
+import UserHistory from './UserHistory.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -73,6 +74,7 @@ const App = () => {
       {currentPage === 'users' && <ManageUsers />}
       {currentPage === 'promo' && <Promotion />}
       {currentPage === 'sales' && <Sales />}
+      {currentPage === 'history' && <UserHistory />}
     </>
   );
 }
