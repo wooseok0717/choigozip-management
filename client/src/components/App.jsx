@@ -66,6 +66,7 @@ const App = () => {
       <div className='current-user'>
         {userName}님으로 접속 되어있습니다. {userTier}등급입니다. <button onClick={() => handleLogOut()}>로그아웃</button>
         {userTier >= 5 && (<button onClick={() => setCurrentPage('users')}>유저 관리하기</button>)}
+        {userTier >= 5 && (<button onClick={() => console.log(new Date())}>TESTING TIME</button>)}
       </div>
       <Navbar setCurrentPage={setCurrentPage}/>
       {currentPage === 'home' && <Homepage />}

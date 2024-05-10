@@ -44,9 +44,6 @@ const UserHistory = () => {
   },[filteredHistory]);
 
   useEffect(() => {
-    console.log('list', filteredHistory);
-    console.log('offset',currentOffset);
-    console.log('page',currentPage);
     setCurrentDisplay(filteredHistory.slice(currentOffset * (currentPage - 1), currentOffset * currentPage));
   },[filteredHistory, currentPage]);
 
