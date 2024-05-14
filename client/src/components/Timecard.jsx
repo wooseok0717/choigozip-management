@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-function Timecard() {
+function Timecard({setCurrentPage}) {
 
   const [recentlyClockedIn, setRecentlyClockedIn] = useState(false);
   const [currentAction, setCurrentAction] = useState('in');
@@ -72,6 +72,9 @@ function Timecard() {
         {localStorage.getItem('name')}님으로 사용중이십니다.
       </h2>
       <div className='btn-ctn'>
+        {localStorage.getItem('tier') >= 5 && (
+          <button onClick={() => {setCurrentPage('timecard-edit')}}>유저 타임카드 수정하기</button>
+        )}
         {currentAction === 'in' ? (
           <button onClick={() => handleClick()}>Clock In</button>
         ) : (

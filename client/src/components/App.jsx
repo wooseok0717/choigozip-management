@@ -8,10 +8,11 @@ import ManageUsers from './ManageUsers.jsx';
 import Promotion from './Promotion.jsx';
 import Sales from './Sales.jsx';
 import UserHistory from './UserHistory.jsx';
+import TimecardEditor from './TimecardEditor.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('timecard-edit');
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('user_id'));
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
@@ -66,16 +67,16 @@ const App = () => {
       <div className='current-user'>
         {userName}님으로 접속 되어있습니다. {userTier}등급입니다. <button onClick={() => handleLogOut()}>로그아웃</button>
         {userTier >= 5 && (<button onClick={() => setCurrentPage('users')}>유저 관리하기</button>)}
-        {userTier >= 5 && (<button onClick={() => console.log(new Date())}>TESTING TIME</button>)}
       </div>
       <Navbar setCurrentPage={setCurrentPage}/>
       {currentPage === 'home' && <Homepage />}
-      {currentPage === 'timecard' && <Timecard />}
+      {currentPage === 'timecard' && <Timecard setCurrentPage={setCurrentPage}/>}
       {currentPage === 'menu' && <Menu />}
       {currentPage === 'users' && <ManageUsers />}
       {currentPage === 'promo' && <Promotion />}
       {currentPage === 'sales' && <Sales />}
       {currentPage === 'history' && <UserHistory />}
+      {currentPage === 'timecard-edit' && <TimecardEditor />}
     </>
   );
 }

@@ -152,6 +152,7 @@ button {
 .btn-ctn {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .page-title {
