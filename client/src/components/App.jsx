@@ -12,7 +12,7 @@ import TimecardEditor from './TimecardEditor.jsx';
 import axios from 'axios';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('timecard-edit');
+  const [currentPage, setCurrentPage] = useState('home');
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('user_id'));
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
