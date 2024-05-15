@@ -18,12 +18,28 @@ const TimecardEditor = () => {
   }
 
   const loadUserTime = () => {
-    // work on this later.
-    // it is being invoked in then clause inside of handleSubmit function in addTimeStamp.jsx
-  }
+    axios.get(`/api/getRecentActivity/?id=${selectedUser}`)
+    .then(({data}) => {
+      setRecentActivities(data);
+    });
+  };
 
   const handleChange = (e) => {
     setSelectedUser(e.target.value);
+  };
+
+  const handleDelete = (id, userId) => {
+    axios.delete(`/api/deleteTimestamp/?id=${id}`)
+    .then(({data}) => {
+      alert(data)
+      loadUserTime();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `${userId}님의 timecard 기록을 삭제했습니다.`,
+        type: 'user'
+      })
+      .then(({data}) => console.log(data));
+    });
   }
 
   const covertTime = (time) => {
@@ -48,10 +64,7 @@ const TimecardEditor = () => {
 
   useEffect(() => {
     if (selectedUser !== '') {
-      axios.get(`/api/getRecentActivity/?id=${selectedUser}`)
-      .then(({data}) => {
-        setRecentActivities(data);
-      })
+      loadUserTime();
     }
   },[selectedUser])
 
@@ -80,6 +93,7 @@ const TimecardEditor = () => {
         {recentActivities.map((row,index) => (
           <div key={index} className={`timestamp clock-row-${row.interaction}`}>
             {covertTime(row.time)}
+            <button onClick={() => handleDelete(row.id,row.user_id)}>Delete</button>
           </div>
         ))}
       </div>

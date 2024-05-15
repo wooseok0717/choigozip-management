@@ -146,5 +146,9 @@ module.exports = {
     const {page, offset} = req.query;
     axios.get(`${baseURL}/api/history/?page=${page}&offset=${offset}`)
     .then(({data}) => res.send(data));
+  },
+  deleteTimestamp: (req, res) => {
+    axios.delete(`${baseURL}/api/deleteTimestamp/?id=${req.query.id}`)
+    .then(({data}) => res.send(data));
   }
 }
