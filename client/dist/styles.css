@@ -265,3 +265,27 @@ button {
 .date-selector-input {
   font-size: 2.3rem;
 }
+
+.sales-label {
+  text-align: center;
+  font-size: 5rem;
+  margin: 2rem;
+}
+
+.sales-report-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sales-report-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+  height: 8vh;
+  justify-content: center;
+  border: 5px solid #000;
+  border-radius: 2rem;
+  background-color: white;
+  padding: 1rem;
+}

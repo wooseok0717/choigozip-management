@@ -150,5 +150,11 @@ module.exports = {
   deleteTimestamp: (req, res) => {
     axios.delete(`${baseURL}/api/deleteTimestamp/?id=${req.query.id}`)
     .then(({data}) => res.send(data));
+  },
+  getSalesWithDate: (req, res) => {
+    axios.get(`${baseURL}/api/salesDate`, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }

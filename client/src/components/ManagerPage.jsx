@@ -4,7 +4,7 @@ const ManagerPage = ({setCurrentPage}) => {
 
   return (
     <div>
-      <h3 className='page-title'>메니저 페이지</h3>
+      <h3 className='page-title'>관리자 페이지</h3>
       <div className='row-container'>
         <div className='row-item manage-btn-ctn'>
           <button onClick={() => setCurrentPage('users')}>유저 관리하기</button>
