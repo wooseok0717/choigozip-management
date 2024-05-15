@@ -229,3 +229,20 @@ button {
   justify-content: space-between;
   font-size: 2.5rem;
 }
+
+.clock-row-in {
+  background-color: rgb(117, 208, 214);
+}
+
+.clock-row-out {
+  background-color: rgb(218, 136, 136);
+}
+
+.timestamp {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 3rem;
+  margin: 1rem;
+  border-radius: 2rem;
+}

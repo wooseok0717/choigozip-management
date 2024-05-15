@@ -8,6 +8,7 @@ const TimecardEditor = () => {
   const [selectedUser, setSelectedUser] = useState('');
   const [selectedId, setSelectedId] = useState('');
   const [newTime, setNewTime] = useState(false);
+  const [recentActivities, setRecentActivities] = useState([]);
 
   const loadUserList = () => {
     axios.get('/api/users')
@@ -25,11 +26,34 @@ const TimecardEditor = () => {
     setSelectedUser(e.target.value);
   }
 
+  const covertTime = (time) => {
+    const options = {
+      weekday: 'long', // Full name of the day of the week
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true // Use 12-hour clock format
+    };
+    const date = new Date(new Date(time).getTime() + (7 * 60 * 60 * 1000));
+    return date.toLocaleString('ko-KR', options);
+  };
+
   useEffect(() => {
     if (userList.length) {
       setSelectedUser(userList[0].user_id);
     }
   },[userList]);
+
+  useEffect(() => {
+    if (selectedUser !== '') {
+      axios.get(`/api/getRecentActivity/?id=${selectedUser}`)
+      .then(({data}) => {
+        setRecentActivities(data);
+      })
+    }
+  },[selectedUser])
 
   useEffect(() => {
     loadUserList();
@@ -51,6 +75,13 @@ const TimecardEditor = () => {
       <div className='btn-ctn'>
         <button onClick={() => setNewTime(true)}>시간 추가하기</button>
         {newTime && (<AddTimeStamp user={selectedUser} closeModal={() => setNewTime(false)} loadUserTime={loadUserTime}/>)}
+      </div>
+      <div>
+        {recentActivities.map((row,index) => (
+          <div key={index} className={`timestamp clock-row-${row.interaction}`}>
+            {covertTime(row.time)}
+          </div>
+        ))}
       </div>
     </div>
   )

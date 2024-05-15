@@ -48,7 +48,7 @@ function Timecard({setCurrentPage}) {
       hour12: true // Use 12-hour clock format
     };
     const date = new Date(new Date(time).getTime() + (7 * 60 * 60 * 1000));
-    return date.toLocaleString('en-US', options);
+    return date.toLocaleString('ko-KR', options);
   };
 
   useEffect(() => {
@@ -85,8 +85,9 @@ function Timecard({setCurrentPage}) {
       <div>최근기록</div>
       <div>
         {recentActivities.map((row,index) => (
-          <div key={index}>
-            {covertTime(row.time)}{row.interaction.toUpperCase()}
+          <div key={index} className={`timestamp clock-row-${row.interaction}`}>
+            <span>{covertTime(row.time)}</span>
+            <span>{row.interaction.toUpperCase()}</span>
           </div>
         ))}
       </div>
