@@ -9,6 +9,8 @@ import Promotion from './Promotion.jsx';
 import Sales from './Sales.jsx';
 import UserHistory from './UserHistory.jsx';
 import TimecardEditor from './TimecardEditor.jsx';
+import ManagerPage from './ManagerPage.jsx';
+import ReportPage from './ReportPage.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -66,7 +68,6 @@ const App = () => {
       <h2 className='title'>최고집 포털</h2>
       <div className='current-user'>
         {userName}님으로 접속 되어있습니다. {userTier}등급입니다. <button onClick={() => handleLogOut()}>로그아웃</button>
-        {userTier >= 5 && (<button onClick={() => setCurrentPage('users')}>유저 관리하기</button>)}
       </div>
       <Navbar setCurrentPage={setCurrentPage}/>
       {currentPage === 'home' && <Homepage />}
@@ -77,6 +78,8 @@ const App = () => {
       {currentPage === 'sales' && <Sales />}
       {currentPage === 'history' && <UserHistory />}
       {currentPage === 'timecard-edit' && <TimecardEditor />}
+      {currentPage === 'manage' && <ManagerPage setCurrentPage={setCurrentPage}/>}
+      {currentPage === 'report' && <ReportPage />}
     </>
   );
 }

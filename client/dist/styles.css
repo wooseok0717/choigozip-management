@@ -246,3 +246,22 @@ button {
   margin: 1rem;
   border-radius: 2rem;
 }
+
+.manage-btn-ctn {
+  border: none;
+  height: 15vh;
+}
+
+.manage-btn-ctn button {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.date-selector {
+  display: flex;
+  justify-content: space-around;
+}
+
+.date-selector-input {
+  font-size: 2.3rem;
+}
