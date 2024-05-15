@@ -16,6 +16,11 @@ const AddTimeStamp = ({user,closeModal, loadUserTime}) => {
       alert(data);
       closeModal();
       loadUserTime();
+      axios.post('/api/record', {
+        creator: localStorage.getItem('name'),
+        action: `${user}님의 timecard 기록을 생성했습니다.`,
+        type: 'user'
+      })
     });
   }
 
