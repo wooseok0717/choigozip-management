@@ -19,9 +19,11 @@ const ReportPage = () => {
   }
 
   const getTimeData = () => {
+    const newDate = new Date(endDate);
+    newDate.setDate(newDate.getDate() + 1);
     axios.get('/api/timeData', {
       params: {
-        startDate, endDate: endDate.setDate(endDate.getDate() + 1)
+        startDate, endDate: newDate
         // startDate, endDate: new Date(new Date(endDate).getTime() + (7 * 60 * 60 * 1000))
       }
     })
