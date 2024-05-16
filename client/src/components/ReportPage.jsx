@@ -17,13 +17,24 @@ const ReportPage = () => {
     .then(({data}) => setSalesData(data));
   }
 
+  const getTimeData = () => {
+    axios.get('/api/timeData', {
+      params: {
+        startDate, endDate
+      }
+    })
+    .then(({data}) => console.log(data));
+  }
+
   const collectData = () => {
     if (startDate === '') {
       console.log('set a start date');
     } else if (endDate === '') {
       console.log('set a end date');
     } else {
+      // all the retrieve should happen here.
       getSales();
+      getTimeData();
     }
   };
 

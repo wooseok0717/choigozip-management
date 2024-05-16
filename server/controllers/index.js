@@ -156,5 +156,11 @@ module.exports = {
       params: req.query
     })
     .then(({data}) => res.send(data));
+  },
+  getTimeWithDate: (req, res) => {
+    axios.get(`${baseURL}/api/timeData`, {
+      params: req.query
+    })
+    .then(({data}) => res.send(data));
   }
 }

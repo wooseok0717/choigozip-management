@@ -12,34 +12,26 @@ const ReportOfSales = ({data}) => {
       <div className='sales-report-display'>
         <div className='sales-report-entry'>
           <span>
-            평균 세일즈
+            총 세일즈(평균)
           </span>
           <span>
-            ${data.average_sales}
-          </span>
-        </div>
-        <div className='sales-report-entry'>
-          <span>
-            총 세일즈
-          </span>
-          <span>
-            ${data.total_sales}
+            ${data.total_sales} ({data.average_sales})
           </span>
         </div>
         <div className='sales-report-entry'>
           <span>
-            평균 팁
+            총 팁(평균)
           </span>
           <span>
-            ${data.average_tip}
+            ${data.total_tip} ({data.average_tip})
           </span>
         </div>
         <div className='sales-report-entry'>
           <span>
-            총 팁
+            총 Cash
           </span>
           <span>
-            ${data.total_tip}
+            {Number(data.total_cash_sales) + Number(data.total_cash_tip)}
           </span>
         </div>
       </div>

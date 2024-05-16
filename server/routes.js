@@ -63,4 +63,6 @@ router.delete('/deleteTimestamp', controllers.deleteTimestamp);
 
 router.get('/salesDate', controllers.getSalesWithDate);
 
+router.get('/timeData', controllers.getTimeWithDate);
+
 module.exports = router;
