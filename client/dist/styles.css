@@ -266,18 +266,18 @@ button {
   font-size: 2.3rem;
 }
 
-.sales-label {
+.sales-label, .times-label {
   text-align: center;
   font-size: 5rem;
   margin: 2rem;
 }
 
-.sales-report-display {
+.sales-report-display, .times-report-display {
   display: flex;
   justify-content: space-around;
 }
 
-.sales-report-entry {
+.sales-report-entry, .times-report-entry {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -288,4 +288,8 @@ button {
   border-radius: 2rem;
   background-color: white;
   padding: 1rem;
+}
+
+.times-report-entry {
+  width: 10rem;
 }

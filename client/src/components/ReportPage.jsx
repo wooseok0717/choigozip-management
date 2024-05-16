@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReportOfSales from './ReportOfSales.jsx';
+import ReportOfTime from './ReportOfTime.jsx';
 import axios from 'axios';
 
 const ReportPage = () => {
@@ -8,6 +9,7 @@ const ReportPage = () => {
   const [endDate, setEndDate] = useState('');
   const [salesData, setSalesData] = useState([]);
   const [timecardData, setTimecardData] = useState([]);
+  const [calculatedTime, setCalculatedTime] = useState([]);
 
   const getSales = () => {
     axios.get(`/api/salesDate`, {
@@ -51,13 +53,11 @@ const ReportPage = () => {
     });
     const sumOfTime = [];
     Object.keys(users).forEach(user => {
-      console.log(users[user])
-      let obj = {user:user};
+      let obj = {user:user, name: users[user][0].name};
       let total = 0;
       let difference = 0;
       let currentIn = null
       users[user].forEach(row => {
-        // console.log(row);
         if (row.interaction === 'in') {
           currentIn = row.time;
         } else {
@@ -69,8 +69,8 @@ const ReportPage = () => {
       });
       obj.time = (difference / (60 * 60 * 1000)).toFixed(2);
       sumOfTime.push(obj);
-      console.log(sumOfTime);
     });
+    setCalculatedTime(sumOfTime);
   }
 
   useEffect(() => {
@@ -96,7 +96,8 @@ const ReportPage = () => {
           <input type='date' className='date-selector-input' value={endDate} onChange={e =>setEndDate(e.target.value)}/>
         </span>
       </div>
-      {salesData.length && (<ReportOfSales data={salesData[0]}/>)}
+      {salesData.length ? (<ReportOfSales data={salesData[0]}/>) : null}
+      {calculatedTime.length ? (<ReportOfTime data={calculatedTime}/>) : null}
     </div>
   )
 }
