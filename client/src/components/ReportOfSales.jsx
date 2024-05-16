@@ -2,8 +2,6 @@ import React from 'react';
 
 const ReportOfSales = ({data}) => {
 
-  console.log(data)
-
   return (
     <div>
       <div className='sales-label'>

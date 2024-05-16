@@ -22,6 +22,7 @@ const ReportPage = () => {
     axios.get('/api/timeData', {
       params: {
         startDate, endDate
+        // startDate, endDate: new Date(new Date(endDate).getTime() + (7 * 60 * 60 * 1000))
       }
     })
     .then(({data}) => setTimecardData(data));
@@ -49,12 +50,13 @@ const ReportPage = () => {
     });
     const sumOfTime = [];
     Object.keys(users).forEach(user => {
+      console.log(users[user])
       let obj = {user:user};
       let total = 0;
       let difference = 0;
       let currentIn = null
       users[user].forEach(row => {
-        console.log(row);
+        // console.log(row);
         if (row.interaction === 'in') {
           currentIn = row.time;
         } else {
