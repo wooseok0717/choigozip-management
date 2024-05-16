@@ -7,6 +7,7 @@ const ReportPage = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [salesData, setSalesData] = useState([]);
+  const [timecardData, setTimecardData] = useState([]);
 
   const getSales = () => {
     axios.get(`/api/salesDate`, {
@@ -23,7 +24,7 @@ const ReportPage = () => {
         startDate, endDate
       }
     })
-    .then(({data}) => console.log(data));
+    .then(({data}) => setTimecardData(data));
   }
 
   const collectData = () => {
@@ -37,6 +38,42 @@ const ReportPage = () => {
       getTimeData();
     }
   };
+
+  const sortDataByUser = () => {
+    const users = {};
+    timecardData.forEach(row => {
+      if (!users[row.user_id]) {
+        users[row.user_id] = [];
+      }
+      users[row.user_id].push(row);
+    });
+    const sumOfTime = [];
+    Object.keys(users).forEach(user => {
+      let obj = {user:user};
+      let total = 0;
+      let difference = 0;
+      let currentIn = null
+      users[user].forEach(row => {
+        console.log(row);
+        if (row.interaction === 'in') {
+          currentIn = row.time;
+        } else {
+          if (currentIn !== null) {
+            difference += new Date(row.time) - new Date(currentIn);
+            currentIn = null
+          }
+        }
+      });
+      obj.time = (difference / (60 * 60 * 1000)).toFixed(2);
+      sumOfTime.push(obj);
+    });
+  }
+
+  useEffect(() => {
+    if (timecardData.length) {
+      sortDataByUser();
+    }
+  },[timecardData]);
 
   useEffect(() => {
     collectData();
