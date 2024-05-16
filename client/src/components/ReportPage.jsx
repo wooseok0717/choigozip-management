@@ -24,7 +24,6 @@ const ReportPage = () => {
     axios.get('/api/timeData', {
       params: {
         startDate, endDate: newDate
-        // startDate, endDate: new Date(new Date(endDate).getTime() + (7 * 60 * 60 * 1000))
       }
     })
     .then(({data}) => setTimecardData(data));
@@ -70,6 +69,7 @@ const ReportPage = () => {
       });
       obj.time = (difference / (60 * 60 * 1000)).toFixed(2);
       sumOfTime.push(obj);
+      console.log(sumOfTime);
     });
   }
 
