@@ -25,8 +25,8 @@ const AddMenu = ({closeModal, catId, loadMenuList, menu}) => {
   const handleUpload = (e) => {
     const file = e.target.files[0];
 
-    const cloudName = 'dfxarumgq';
-    const uploadPreset = 'krundzwn';
+    const cloudName = 'dtji1aslt';
+    const uploadPreset = 'ruozgpa4';
 
     const formData = new FormData();
     formData.append('file', file);
