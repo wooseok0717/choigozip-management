@@ -24,6 +24,45 @@ Once logged in, managers can:
 ## Link
 [Choigozip Management Page](http://54.153.83.98:3000/)
 
+## Demonstrations
+
+<details>
+  <summary>
+    <h4>Timecard as User/Admin</h4>
+  </summary>
+  <img width="200" src="https://github.com/user-attachments/assets/20ff1e53-1e57-4aac-9e6a-7519d7a4328d">
+  <img width="200" src="https://github.com/user-attachments/assets/7a7080da-e2e1-4165-803b-91e4fc66e566">
+  
+</details>
+
+<details>
+  <summary>
+    <h4>Menu editing</h4>
+  </summary>
+  <img width="200" src="https://github.com/user-attachments/assets/dac7192d-e670-4822-a181-baec0e2ecc6d">
+</details>
+
+<details>
+  <summary>
+    <h4>Sales Report</h4>
+  </summary>
+  <img width="200" src="https://github.com/user-attachments/assets/9a2a946f-9012-41e1-be6a-b4a4d6eb3316">
+</details>
+
+<details>
+  <summary>
+    <h4>Activity Logs</h4>
+  </summary>
+  <img width="200" src="https://github.com/user-attachments/assets/7b67f13f-518c-4723-8ecd-47991c9d8b33">
+</details>
+
+<details>
+  <summary>
+    <h4>Report Viewing</h4>
+  </summary>
+  <img width="200" src="https://github.com/user-attachments/assets/65efe0cf-6bae-45d1-94b3-77ebf4e9419f">
+</details>
+
 ## Technologies Used
 
 ### Frontend Framework:
